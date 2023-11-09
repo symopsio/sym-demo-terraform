@@ -41,8 +41,8 @@ resource "sym_secret" "access_okta_api_key" {
 
 # A target Okta group that your Sym Strategy can manage access to
 resource "sym_target" "okta_group_1" {
-  type = "okta_group"
-  name = "okta-admin-group"
+  type  = "okta_group"
+  name  = "okta-admin-group"
   label = "Okta Admin Group"
 
   settings = {
@@ -57,8 +57,8 @@ resource "sym_target" "okta_group_1" {
 
 # A target Okta group that your Sym Strategy can manage access to
 resource "sym_target" "okta_group_2" {
-  type = "okta_group"
-  name = "okta-staging-access-group"
+  type  = "okta_group"
+  name  = "okta-staging-access-group"
   label = "Okta Staging Access Group"
 
   settings = {
