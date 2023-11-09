@@ -42,8 +42,8 @@ resource "sym_secret" "access_onelogin_client_secret" {
 
 # A target OneLogin role that your Sym Strategy can manage access to
 resource "sym_target" "onelogin_admin_role" {
-  type = "onelogin_role"
-  name = "onelogin-admin-role"
+  type  = "onelogin_role"
+  name  = "onelogin-admin-role"
   label = "Admin Role"
 
   settings = {
@@ -53,15 +53,15 @@ resource "sym_target" "onelogin_admin_role" {
 
     # The Role ID can be found in the URL when viewing the Role details
     # (Admin Console > Users > Roles > Select your Role).
-    role_id = "123467"
+    role_id         = "123467"
     privilege_level = "member"
   }
 }
 
 # A target OneLogin role that your Sym Strategy can manage access to
 resource "sym_target" "onelogin_customer_success_role" {
-  type = "onelogin_role"
-  name = "onelogin-customer-success-role"
+  type  = "onelogin_role"
+  name  = "onelogin-customer-success-role"
   label = "Customer Success Role"
 
   settings = {
@@ -71,15 +71,15 @@ resource "sym_target" "onelogin_customer_success_role" {
 
     # The Role ID can be found in the URL when viewing the Role details
     # (Admin Console > Users > Roles > Select your Role).
-    role_id = "789012"
+    role_id         = "789012"
     privilege_level = "member"
   }
 }
 
 # A target OneLogin role that your Sym Strategy can manage access to
 resource "sym_target" "onelogin_power_user_role" {
-  type = "onelogin_role"
-  name = "onelogin-power-user-role"
+  type  = "onelogin_role"
+  name  = "onelogin-power-user-role"
   label = "Power User Role"
 
   settings = {
@@ -89,7 +89,7 @@ resource "sym_target" "onelogin_power_user_role" {
 
     # The Role ID can be found in the URL when viewing the Role details
     # (Admin Console > Users > Roles > Select your Role).
-    role_id = "098764"
+    role_id         = "098764"
     privilege_level = "member"
   }
 }
@@ -119,9 +119,9 @@ resource "sym_flow" "access_onelogin" {
     strategy_id = sym_strategy.access_onelogin.id
 
     prompt_field {
-      name      = "target_id"
-      type      = "string"
-      required  = true
+      name     = "target_id"
+      type     = "string"
+      required = true
 
       # When the Target field selection changes, the on_change_target_id method in this file will be executed.
       on_change = file("./impls/onelogin_on_change.py")
@@ -137,7 +137,7 @@ resource "sym_flow" "access_onelogin" {
       prefetch = true
 
       # This field is hidden unless the Customer Success Role is selected, as implemented in onelogin_on_change.py
-      visible  = false
+      visible = false
     }
 
     prompt_field {
